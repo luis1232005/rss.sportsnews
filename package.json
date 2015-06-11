@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/luis1232005/rss.sportsnews",
   "dependencies": {
-    "async": "^1.2.1"
+    "async": "^1.2.1",
+    "cheerio": "^0.19.0",
+    "iconv-lite": "^0.4.10"
   }
 }
