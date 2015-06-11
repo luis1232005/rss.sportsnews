@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/luis1232005/rss.sportsnews/issues"
   },
-  "homepage": "https://github.com/luis1232005/rss.sportsnews"
+  "homepage": "https://github.com/luis1232005/rss.sportsnews",
+  "dependencies": {
+    "async": "^1.2.1"
+  }
 }
