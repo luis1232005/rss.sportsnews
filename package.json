@@ -1,0 +1,19 @@
+{
+  "name": "rss.sportsnews",
+  "version": "0.0.1",
+  "description": "love sports love basa",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/luis1232005/rss.sportsnews"
+  },
+  "author": "luis",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/luis1232005/rss.sportsnews/issues"
+  },
+  "homepage": "https://github.com/luis1232005/rss.sportsnews"
+}
