@@ -1,1 +1,1 @@
-
+mongod --dbpath "D:\node\rss.sportsnews\database" --logpath "D:\node\rss.sportsnews\database\log\BnjlbDb.log" --install --serviceName "BnjlbDb"
