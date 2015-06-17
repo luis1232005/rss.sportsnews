@@ -1,31 +1,47 @@
-// grab the things we need
-var mongoose = require('mongoose');
+//引入模块
+var mongoose = require('mongodb').mongoose;
 var Schema = mongoose.Schema;
 
-// create a schema
+// create a news schema
 var newsSchema = new Schema({
     title: String,
     link: String,
     description: String,
     author: String,
-    pubDate: String,
+    pubDate: { type: Date,default: Date.now },
     img: String,
     category:String
 });
-
-//// custom method to add string to end of name
-//// you can create more important methods like name validations or formatting
-//// you can also do queries and find similar users
-//newsSchema.methods.dudify = function() {
-//    // add some stuff to the users name
-//    this.name = this.name + '-dude';
-//
-//    return this.name;
-//};
 
 // the schema is useless so far
 // we need to create a model using it
 var News = mongoose.model('News', newsSchema);
 
+var NewsDAO = function(){
+    //todo:constructor
+};
+
+NewsDAO.prototype.save = function(obj, callback) {
+    var instance = new News(obj);
+    instance.save(function(err){
+        callback(err);
+    });
+};
+
+NewsDAO.prototype.findByIdAndUpdate = function(obj,callback){
+    var _id=obj._id;
+    delete obj._id;
+    News.findOneAndUpdate(_id, obj, function(err,obj){
+        callback(err, obj);
+    });
+}
+
+
+NewsDAO.prototype.findByName = function(name, callback) {
+    News.findOne({name:name}, function(err, obj){
+        callback(err, obj);
+    });
+};
+
 // make this available to our users in our Node applications
-module.exports = News;
+module.exports = NewsDAO;

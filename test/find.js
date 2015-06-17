@@ -12,7 +12,7 @@ console.log(mongoose.connected,db.connected);
 db.once('open', function () {
     //create Schema and models
     console.log("连接成功！");
-    var News = require('../models/news');
+    var News = require('../models/News');
     News.find({title:/.*巴萨.*/g},function(err,items){
         if(err) throw err;
         _.each(items,function(item,index){

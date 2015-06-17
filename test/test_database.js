@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var db = mongoose.connection;
 
-var News = require('../models/news');
+var News = require('../models/News');
 
 //todo:数据库连接处理
 db.on('error', console.error.bind(console, 'connection error:'));
