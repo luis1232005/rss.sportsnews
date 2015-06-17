@@ -6,6 +6,8 @@ var _ = require('underscore');
 //todo:数据库连接处理
 db.on('error', console.error.bind(console, 'connection error:'));
 
+console.log(mongoose.connected,db.connected);
+
 //todo:
 db.once('open', function () {
     //create Schema and models
@@ -14,8 +16,12 @@ db.once('open', function () {
     News.find({title:/.*巴萨.*/g},function(err,items){
         if(err) throw err;
         _.each(items,function(item,index){
-            console.log(item.pubDate + "|" +item.title + '\n');
+           // console.log(item._id + "|" + item.pubDate + "|" +item.title + '\n');
+
         });
+        var uniqItems = _.uniq(items,false,"title");
+
+        console.log(uniqItems.length,items.length,mongoose.connected,db.connected);
     });
 });
 mongoose.connect('mongodb://localhost/BnjlbDb');
