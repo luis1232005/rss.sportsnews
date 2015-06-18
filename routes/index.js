@@ -1,15 +1,19 @@
 //载入模块
 var express = require('express');
 var router = express.Router();
+var _ = require('underscore');
 var News = require('../models/News');
-var _ = require('../lib/util');
+
 
 /* GET home page. */
 router.get('/', function(req, res) {
-    res.render('index', { title: 'Express' });
+    res.render('index', { title: '首页' });
 });
 
-//
+router.get('/list', function(req, res) {
+    res.render('list', { title: '列表' });
+});
+
 router.get('/getnews',function(req, res) {
     var key = req.query.key ||'';
     News.findByName(key,function(err, obj){
