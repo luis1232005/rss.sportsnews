@@ -1,4 +1,9 @@
 ﻿{% extends 'shared/layout.html' %}
 {% block body %}
-    <h2>{{title}}</h2>
+    <h2>新闻</h2>
+    <script type="text/javascript">
+        $.get('/getnews?key=巴萨').success(function(){
+            console.log(arguments);
+        });
+    </script>
 {% endblock %}
