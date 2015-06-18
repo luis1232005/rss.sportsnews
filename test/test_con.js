@@ -1,4 +1,4 @@
-var mongoose = require('../models/mongodb').mongoose;
+var mongoose = require('../lib/mongodb').mongoose;
 
 for(var i in mongoose){
     console.log(i);

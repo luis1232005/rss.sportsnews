@@ -1,5 +1,5 @@
 //引入模块
-var mongoose = require('./mongodb').mongoose;
+var mongoose = require('./../lib/mongodb').mongoose;
 var Schema = mongoose.Schema;
 
 // create a news schema
@@ -38,7 +38,7 @@ NewsDAO.prototype.findByIdAndUpdate = function(obj,callback){
 
 
 NewsDAO.prototype.findByName = function(name, callback) {
-    News.findOne({title:name}, function(err, obj){
+    News.find({title:name}, function(err, obj){
         callback(err, obj);
     });
 };
