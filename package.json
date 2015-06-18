@@ -4,6 +4,7 @@
   "description": "love sports love basa",
   "main": "index.js",
   "scripts": {
+    "start": "node ./bin/www",
     "test": "npm test"
   },
   "repository": {
@@ -18,11 +19,16 @@
   "homepage": "https://github.com/luis1232005/rss.sportsnews",
   "dependencies": {
     "async": "^1.2.1",
+    "body-parser": "^1.13.1",
     "cheerio": "^0.19.0",
     "connect": "^2.29.2",
+    "cookie-parser": "^1.3.5",
+    "debug": "^2.2.0",
     "express": "^4.12.4",
     "iconv-lite": "^0.4.10",
     "mongoose": "^4.0.5",
+    "morgan": "^1.6.0",
+    "serve-favicon": "^2.3.0",
     "session-mongoose": "^0.5.2",
     "swig": "^1.4.2",
     "underscore": "^1.8.3"
