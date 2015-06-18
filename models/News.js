@@ -38,6 +38,7 @@ NewsDAO.prototype.findByIdAndUpdate = function(obj,callback){
 
 
 NewsDAO.prototype.findByName = function(name, callback) {
+    name = new RegExp('.*' + name + '.*');
     News.find({title:name}, function(err, obj){
         callback(err, obj);
     });
