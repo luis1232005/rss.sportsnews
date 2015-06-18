@@ -4,14 +4,27 @@ var router = express.Router();
 var _ = require('underscore');
 var News = require('../models/News');
 
+router.get(/.*/, function (req, res, next) {
+    next();
+});
 
 /* GET home page. */
 router.get('/', function(req, res) {
-    res.render('index', { title: '首页' });
+    res.render('index', {
+        title: '首页'
+    });
+});
+
+router.get('/index', function(req, res) {
+    res.render('index', {
+        title: '首页'
+    });
 });
 
 router.get('/list', function(req, res) {
-    res.render('list', { title: '列表' });
+    res.render('list', {
+        title: '列表'
+    });
 });
 
 router.get('/getnews',function(req, res) {
