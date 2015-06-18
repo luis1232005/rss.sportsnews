@@ -1,9 +1,22 @@
 ﻿{% extends 'shared/layout.html' %}
 {% block body %}
     <h2>新闻</h2>
+    <div class="js_box"></div>
     <script type="text/javascript">
-        $.get('/getnews?key=巴萨').success(function(){
-            console.log(arguments);
+        $.get('/getnews?key=巴萨').success(function(data){
+            if(data.success && data.items && data.items.length>0){
+                var str = '';
+                var items = data.items;
+                var len = data.items.length;
+
+                for(var i=0;i< items.length;i++){
+                    console.log(items[i].title,items[i].link);
+                    str += '<li><a href="'+ items[i].link +'" target="_bank">' + items[i].title + '</a></li>';
+                }
+
+
+                $('.js_box').html('<ul>'+str+'</ul>');
+            }
         });
     </script>
 {% endblock %}
