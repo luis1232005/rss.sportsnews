@@ -1,7 +1,7 @@
 var News = require('../models/News');
 
 News.save({
-    title:'测试一',
+    title:'测试一123',
     author: 'luis'
 },function(err){
     if(err){
@@ -10,13 +10,7 @@ News.save({
         return;
     }
 
-    News.findByName('测试一',function(err,items){
-        if(err){
-            throw err;
-            return;
-        }
-        console.log(items[0].pubDate.getTime());
-    })
+    console.log("保存成功!");
 });
 
 
