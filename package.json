@@ -29,6 +29,7 @@
     "iconv-lite": "^0.4.10",
     "mongoose": "^4.0.5",
     "morgan": "^1.6.0",
+    "random-useragent": "^0.3.0",
     "serve-favicon": "^2.3.0",
     "session-mongoose": "^0.5.2",
     "swig": "^1.4.2",
