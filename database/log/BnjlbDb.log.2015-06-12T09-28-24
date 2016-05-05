@@ -1,0 +1,4 @@
+2015-06-12T17:28:11.756+0800 I CONTROL  Hotfix KB2731284 or later update is not installed, will zero-out data files
+2015-06-12T17:28:11.762+0800 I CONTROL  Trying to install Windows service 'BnjlbDb'
+2015-06-12T17:28:12.012+0800 I CONTROL  Service 'BnjlbDb' (MongoDB) installed with command line '"c:\Program Files\MongoDB\Server\3.0\bin\mongod.exe" --dbpath D:\node\rss.sportsnews\database --logpath D:\node\rss.sportsnews\database\log\BnjlbDb.log --service'
+2015-06-12T17:28:12.012+0800 I CONTROL  Service can be started from the command line with 'net start BnjlbDb'

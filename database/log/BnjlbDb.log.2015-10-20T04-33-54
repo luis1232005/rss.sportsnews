@@ -1,0 +1,35 @@
+2015-10-16T12:44:25.246+0800 I CONTROL  Hotfix KB2731284 or later update is not installed, will zero-out data files
+2015-10-16T12:44:25.407+0800 I CONTROL  Trying to start Windows service 'MongoDB'
+2015-10-16T12:44:25.409+0800 I STORAGE  Service running
+2015-10-16T12:44:25.703+0800 I JOURNAL  [initandlisten] journal dir=D:\node\rss.sportsnews\database\journal
+2015-10-16T12:44:25.817+0800 I JOURNAL  [initandlisten] recover : no journal files present, no recovery needed
+2015-10-16T12:44:25.968+0800 I JOURNAL  [durability] Durability thread started
+2015-10-16T12:44:26.404+0800 I JOURNAL  [journal writer] Journal writer thread started
+2015-10-16T12:44:26.406+0800 I CONTROL  [initandlisten] MongoDB starting : pid=2248 port=27017 dbpath=D:\node\rss.sportsnews\database 64-bit host=DST59985
+2015-10-16T12:44:26.406+0800 I CONTROL  [initandlisten] targetMinOS: Windows 7/Windows Server 2008 R2
+2015-10-16T12:44:26.406+0800 I CONTROL  [initandlisten] db version v3.0.3
+2015-10-16T12:44:26.406+0800 I CONTROL  [initandlisten] git version: b40106b36eecd1b4407eb1ad1af6bc60593c6105
+2015-10-16T12:44:26.406+0800 I CONTROL  [initandlisten] OpenSSL version: OpenSSL 1.0.1m-fips 19 Mar 2015
+2015-10-16T12:44:26.406+0800 I CONTROL  [initandlisten] build info: windows sys.getwindowsversion(major=6, minor=1, build=7601, platform=2, service_pack='Service Pack 1') BOOST_LIB_VERSION=1_49
+2015-10-16T12:44:26.406+0800 I CONTROL  [initandlisten] allocator: system
+2015-10-16T12:44:26.406+0800 I CONTROL  [initandlisten] options: { service: true, storage: { dbPath: "D:\node\rss.sportsnews\database" }, systemLog: { destination: "file", path: "D:\node\rss.sportsnews\database\log\BnjlbDb.log" } }
+2015-10-16T12:44:59.304+0800 I QUERY    [initandlisten] query admin.system.roles planSummary: EOF ntoreturn:0 ntoskip:0 nscanned:0 nscannedObjects:0 keyUpdates:0 writeConflicts:0 numYields:0 nreturned:0 reslen:20 locks:{ Global: { acquireCount: { r: 1 } }, MMAPV1Journal: { acquireCount: { r: 1 } }, Database: { acquireCount: { r: 1 } }, Collection: { acquireCount: { R: 1 } } } 139ms
+2015-10-16T12:45:00.212+0800 I NETWORK  [initandlisten] waiting for connections on port 27017
+2015-10-16T19:10:56.156+0800 I COMMAND  [PeriodicTaskRunner] task: DBConnectionPool-cleaner took: 6ms
+2015-10-20T12:31:17.912+0800 I CONTROL  [serviceShutdown] got SERVICE_CONTROL_SHUTDOWN request from Windows Service Control Manager, will terminate after current cmd ends
+2015-10-20T12:31:20.518+0800 I CONTROL  [serviceStopWorker] now exiting
+2015-10-20T12:31:20.549+0800 I NETWORK  [serviceStopWorker] shutdown: going to close listening sockets...
+2015-10-20T12:31:21.111+0800 I NETWORK  [serviceStopWorker] closing listening socket: 380
+2015-10-20T12:31:21.176+0800 I NETWORK  [serviceStopWorker] shutdown: going to flush diaglog...
+2015-10-20T12:31:21.176+0800 I NETWORK  [serviceStopWorker] shutdown: going to close sockets...
+2015-10-20T12:31:21.176+0800 I STORAGE  [serviceStopWorker] shutdown: waiting for fs preallocator...
+2015-10-20T12:31:21.280+0800 I STORAGE  [serviceStopWorker] shutdown: final commit...
+2015-10-20T12:31:21.603+0800 I JOURNAL  [serviceStopWorker] journalCleanup...
+2015-10-20T12:31:21.757+0800 I JOURNAL  [serviceStopWorker] removeJournalFiles
+2015-10-20T12:31:23.683+0800 I JOURNAL  [serviceStopWorker] Terminating durability thread ...
+2015-10-20T12:31:23.930+0800 I JOURNAL  [journal writer] Journal writer thread stopped
+2015-10-20T12:31:24.151+0800 I JOURNAL  [durability] Durability thread stopped
+2015-10-20T12:31:24.151+0800 I STORAGE  [serviceStopWorker] shutdown: closing all files...
+2015-10-20T12:31:25.431+0800 I STORAGE  [serviceStopWorker] closeAllFiles() finished
+2015-10-20T12:31:25.534+0800 I STORAGE  [serviceStopWorker] shutdown: removing fs lock...
+2015-10-20T12:31:25.535+0800 I CONTROL  [serviceStopWorker] dbexit:  rc: 49

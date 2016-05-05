@@ -19,7 +19,7 @@
   },
   "homepage": "https://github.com/luis1232005/rss.sportsnews",
   "dependencies": {
-    "async": "^1.2.1",
+    "async": "^1.5.2",
     "body-parser": "^1.13.1",
     "cheerio": "^0.19.0",
     "connect": "^2.29.2",

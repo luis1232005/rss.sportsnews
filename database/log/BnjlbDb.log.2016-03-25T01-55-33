@@ -1,0 +1,40 @@
+2016-03-21T15:33:00.387+0800 I CONTROL  Hotfix KB2731284 or later update is not installed, will zero-out data files
+2016-03-21T15:33:00.397+0800 I CONTROL  Trying to start Windows service 'MongoDB'
+2016-03-21T15:33:00.397+0800 I STORAGE  Service running
+2016-03-21T15:33:00.459+0800 I JOURNAL  [initandlisten] journal dir=D:\node\rss.sportsnews\database\journal
+2016-03-21T15:33:00.461+0800 I JOURNAL  [initandlisten] recover : no journal files present, no recovery needed
+2016-03-21T15:33:00.488+0800 I JOURNAL  [durability] Durability thread started
+2016-03-21T15:33:00.489+0800 I JOURNAL  [journal writer] Journal writer thread started
+2016-03-21T15:33:00.576+0800 I CONTROL  [initandlisten] MongoDB starting : pid=2180 port=27017 dbpath=D:\node\rss.sportsnews\database 64-bit host=DST59985
+2016-03-21T15:33:00.576+0800 I CONTROL  [initandlisten] targetMinOS: Windows 7/Windows Server 2008 R2
+2016-03-21T15:33:00.576+0800 I CONTROL  [initandlisten] db version v3.0.3
+2016-03-21T15:33:00.576+0800 I CONTROL  [initandlisten] git version: b40106b36eecd1b4407eb1ad1af6bc60593c6105
+2016-03-21T15:33:00.576+0800 I CONTROL  [initandlisten] OpenSSL version: OpenSSL 1.0.1m-fips 19 Mar 2015
+2016-03-21T15:33:00.576+0800 I CONTROL  [initandlisten] build info: windows sys.getwindowsversion(major=6, minor=1, build=7601, platform=2, service_pack='Service Pack 1') BOOST_LIB_VERSION=1_49
+2016-03-21T15:33:00.576+0800 I CONTROL  [initandlisten] allocator: system
+2016-03-21T15:33:00.576+0800 I CONTROL  [initandlisten] options: { service: true, storage: { dbPath: "D:\node\rss.sportsnews\database" }, systemLog: { destination: "file", path: "D:\node\rss.sportsnews\database\log\BnjlbDb.log" } }
+2016-03-21T15:33:01.048+0800 I NETWORK  [initandlisten] waiting for connections on port 27017
+2016-03-24T16:33:14.325+0800 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:64717 #1 (1 connection now open)
+2016-03-24T16:33:14.337+0800 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:64718 #2 (2 connections now open)
+2016-03-24T16:33:14.337+0800 I NETWORK  [conn1] end connection 127.0.0.1:64717 (0 connections now open)
+2016-03-24T16:33:14.338+0800 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:64719 #3 (3 connections now open)
+2016-03-24T16:33:14.339+0800 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:64720 #4 (3 connections now open)
+2016-03-24T16:33:14.339+0800 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:64721 #5 (4 connections now open)
+2016-03-24T16:33:14.340+0800 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:64722 #6 (5 connections now open)
+2016-03-24T16:33:28.498+0800 I NETWORK  [conn2] end connection 127.0.0.1:64718 (4 connections now open)
+2016-03-24T16:33:28.498+0800 I NETWORK  [conn4] end connection 127.0.0.1:64720 (4 connections now open)
+2016-03-24T16:33:28.498+0800 I NETWORK  [conn3] end connection 127.0.0.1:64719 (3 connections now open)
+2016-03-24T16:33:28.498+0800 I NETWORK  [conn6] end connection 127.0.0.1:64722 (2 connections now open)
+2016-03-24T16:33:28.498+0800 I NETWORK  [conn5] end connection 127.0.0.1:64721 (4 connections now open)
+2016-03-24T16:33:37.571+0800 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:64728 #7 (1 connection now open)
+2016-03-24T16:33:37.580+0800 I NETWORK  [conn7] end connection 127.0.0.1:64728 (0 connections now open)
+2016-03-24T16:33:37.582+0800 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:64729 #8 (1 connection now open)
+2016-03-24T16:33:37.583+0800 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:64730 #9 (2 connections now open)
+2016-03-24T16:33:37.584+0800 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:64731 #10 (3 connections now open)
+2016-03-24T16:33:37.585+0800 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:64732 #11 (4 connections now open)
+2016-03-24T16:33:37.586+0800 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:64733 #12 (5 connections now open)
+2016-03-25T04:47:56.783+0800 I NETWORK  [conn8] end connection 127.0.0.1:64729 (4 connections now open)
+2016-03-25T04:47:56.783+0800 I NETWORK  [conn11] end connection 127.0.0.1:64732 (4 connections now open)
+2016-03-25T04:47:56.783+0800 I NETWORK  [conn9] end connection 127.0.0.1:64730 (3 connections now open)
+2016-03-25T04:47:56.783+0800 I NETWORK  [conn12] end connection 127.0.0.1:64733 (3 connections now open)
+2016-03-25T04:47:56.783+0800 I NETWORK  [conn10] end connection 127.0.0.1:64731 (2 connections now open)

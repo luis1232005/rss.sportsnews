@@ -1,0 +1,52 @@
+2015-09-11T09:54:13.641+0800 I CONTROL  Hotfix KB2731284 or later update is not installed, will zero-out data files
+2015-09-11T09:54:13.757+0800 I CONTROL  Trying to start Windows service 'MongoDB'
+2015-09-11T09:54:13.759+0800 I STORAGE  Service running
+2015-09-11T09:54:14.076+0800 I JOURNAL  [initandlisten] journal dir=D:\node\rss.sportsnews\database\journal
+2015-09-11T09:54:14.200+0800 I JOURNAL  [initandlisten] recover : no journal files present, no recovery needed
+2015-09-11T09:54:14.289+0800 I JOURNAL  [durability] Durability thread started
+2015-09-11T09:54:14.629+0800 I JOURNAL  [journal writer] Journal writer thread started
+2015-09-11T09:54:14.631+0800 I CONTROL  [initandlisten] MongoDB starting : pid=2240 port=27017 dbpath=D:\node\rss.sportsnews\database 64-bit host=DST59985
+2015-09-11T09:54:14.631+0800 I CONTROL  [initandlisten] targetMinOS: Windows 7/Windows Server 2008 R2
+2015-09-11T09:54:14.631+0800 I CONTROL  [initandlisten] db version v3.0.3
+2015-09-11T09:54:14.631+0800 I CONTROL  [initandlisten] git version: b40106b36eecd1b4407eb1ad1af6bc60593c6105
+2015-09-11T09:54:14.631+0800 I CONTROL  [initandlisten] OpenSSL version: OpenSSL 1.0.1m-fips 19 Mar 2015
+2015-09-11T09:54:14.631+0800 I CONTROL  [initandlisten] build info: windows sys.getwindowsversion(major=6, minor=1, build=7601, platform=2, service_pack='Service Pack 1') BOOST_LIB_VERSION=1_49
+2015-09-11T09:54:14.631+0800 I CONTROL  [initandlisten] allocator: system
+2015-09-11T09:54:14.631+0800 I CONTROL  [initandlisten] options: { service: true, storage: { dbPath: "D:\node\rss.sportsnews\database" }, systemLog: { destination: "file", path: "D:\node\rss.sportsnews\database\log\BnjlbDb.log" } }
+2015-09-11T09:54:46.150+0800 I NETWORK  [initandlisten] waiting for connections on port 27017
+2015-09-11T14:38:19.371+0800 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:15172 #1 (1 connection now open)
+2015-09-11T14:38:19.408+0800 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:15173 #2 (2 connections now open)
+2015-09-11T14:38:30.441+0800 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:15174 #3 (3 connections now open)
+2015-09-11T14:38:30.461+0800 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:15175 #4 (4 connections now open)
+2015-09-11T14:40:44.496+0800 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:15204 #5 (5 connections now open)
+2015-09-11T14:40:47.872+0800 I NETWORK  [conn5] end connection 127.0.0.1:15204 (4 connections now open)
+2015-09-11T14:40:50.807+0800 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:15209 #6 (5 connections now open)
+2015-09-11T14:41:11.145+0800 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:15213 #7 (6 connections now open)
+2015-09-11T14:41:11.157+0800 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:15214 #8 (7 connections now open)
+2015-09-11T14:41:46.661+0800 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:15218 #9 (8 connections now open)
+2015-09-11T14:41:46.677+0800 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:15219 #10 (9 connections now open)
+2015-09-11T14:41:53.253+0800 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:15220 #11 (10 connections now open)
+2015-09-11T14:41:53.265+0800 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:15221 #12 (11 connections now open)
+2015-09-11T14:42:21.608+0800 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:15223 #13 (12 connections now open)
+2015-09-11T14:42:21.620+0800 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:15224 #14 (13 connections now open)
+2015-09-11T14:43:15.074+0800 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:15230 #15 (14 connections now open)
+2015-09-11T14:43:15.094+0800 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:15231 #16 (15 connections now open)
+2015-09-11T14:43:17.839+0800 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:15232 #17 (16 connections now open)
+2015-09-11T14:43:17.854+0800 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:15233 #18 (17 connections now open)
+2015-09-11T14:44:08.858+0800 I NETWORK  [conn2] end connection 127.0.0.1:15173 (16 connections now open)
+2015-09-11T14:44:08.859+0800 I NETWORK  [conn1] end connection 127.0.0.1:15172 (15 connections now open)
+2015-09-11T14:44:08.861+0800 I NETWORK  [conn4] end connection 127.0.0.1:15175 (14 connections now open)
+2015-09-11T14:44:08.862+0800 I NETWORK  [conn3] end connection 127.0.0.1:15174 (13 connections now open)
+2015-09-11T14:44:08.864+0800 I NETWORK  [conn8] end connection 127.0.0.1:15214 (12 connections now open)
+2015-09-11T14:44:08.865+0800 I NETWORK  [conn7] end connection 127.0.0.1:15213 (11 connections now open)
+2015-09-11T14:44:08.867+0800 I NETWORK  [conn10] end connection 127.0.0.1:15219 (10 connections now open)
+2015-09-11T14:44:08.869+0800 I NETWORK  [conn9] end connection 127.0.0.1:15218 (9 connections now open)
+2015-09-11T14:44:08.870+0800 I NETWORK  [conn12] end connection 127.0.0.1:15221 (8 connections now open)
+2015-09-11T14:44:08.871+0800 I NETWORK  [conn11] end connection 127.0.0.1:15220 (7 connections now open)
+2015-09-11T14:44:08.874+0800 I NETWORK  [conn14] end connection 127.0.0.1:15224 (6 connections now open)
+2015-09-11T14:44:08.875+0800 I NETWORK  [conn13] end connection 127.0.0.1:15223 (5 connections now open)
+2015-09-11T14:44:08.877+0800 I NETWORK  [conn16] end connection 127.0.0.1:15231 (4 connections now open)
+2015-09-11T14:44:08.878+0800 I NETWORK  [conn15] end connection 127.0.0.1:15230 (3 connections now open)
+2015-09-11T14:44:08.880+0800 I NETWORK  [conn18] end connection 127.0.0.1:15233 (2 connections now open)
+2015-09-11T14:44:08.881+0800 I NETWORK  [conn17] end connection 127.0.0.1:15232 (1 connection now open)
+2015-09-11T14:44:18.487+0800 I NETWORK  [conn6] end connection 127.0.0.1:15209 (0 connections now open)

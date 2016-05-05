@@ -1,0 +1,33 @@
+2015-12-29T12:01:39.673+0800 I CONTROL  Hotfix KB2731284 or later update is not installed, will zero-out data files
+2015-12-29T12:01:39.769+0800 I CONTROL  Trying to start Windows service 'MongoDB'
+2015-12-29T12:01:39.771+0800 I STORAGE  Service running
+2015-12-29T12:01:40.057+0800 I JOURNAL  [initandlisten] journal dir=D:\node\rss.sportsnews\database\journal
+2015-12-29T12:01:40.145+0800 I JOURNAL  [initandlisten] recover : no journal files present, no recovery needed
+2015-12-29T12:01:40.235+0800 I JOURNAL  [durability] Durability thread started
+2015-12-29T12:01:40.675+0800 I JOURNAL  [journal writer] Journal writer thread started
+2015-12-29T12:01:40.726+0800 I CONTROL  [initandlisten] MongoDB starting : pid=2344 port=27017 dbpath=D:\node\rss.sportsnews\database 64-bit host=DST59985
+2015-12-29T12:01:40.727+0800 I CONTROL  [initandlisten] targetMinOS: Windows 7/Windows Server 2008 R2
+2015-12-29T12:01:40.727+0800 I CONTROL  [initandlisten] db version v3.0.3
+2015-12-29T12:01:40.727+0800 I CONTROL  [initandlisten] git version: b40106b36eecd1b4407eb1ad1af6bc60593c6105
+2015-12-29T12:01:40.727+0800 I CONTROL  [initandlisten] OpenSSL version: OpenSSL 1.0.1m-fips 19 Mar 2015
+2015-12-29T12:01:40.727+0800 I CONTROL  [initandlisten] build info: windows sys.getwindowsversion(major=6, minor=1, build=7601, platform=2, service_pack='Service Pack 1') BOOST_LIB_VERSION=1_49
+2015-12-29T12:01:40.727+0800 I CONTROL  [initandlisten] allocator: system
+2015-12-29T12:01:40.727+0800 I CONTROL  [initandlisten] options: { service: true, storage: { dbPath: "D:\node\rss.sportsnews\database" }, systemLog: { destination: "file", path: "D:\node\rss.sportsnews\database\log\BnjlbDb.log" } }
+2015-12-29T12:02:34.007+0800 I NETWORK  [initandlisten] waiting for connections on port 27017
+2015-12-31T11:31:28.351+0800 I CONTROL  [serviceShutdown] got SERVICE_CONTROL_SHUTDOWN request from Windows Service Control Manager, will terminate after current cmd ends
+2015-12-31T11:31:28.465+0800 I CONTROL  [serviceStopWorker] now exiting
+2015-12-31T11:31:28.475+0800 I NETWORK  [serviceStopWorker] shutdown: going to close listening sockets...
+2015-12-31T11:31:28.477+0800 I NETWORK  [serviceStopWorker] closing listening socket: 380
+2015-12-31T11:31:28.478+0800 I NETWORK  [serviceStopWorker] shutdown: going to flush diaglog...
+2015-12-31T11:31:28.478+0800 I NETWORK  [serviceStopWorker] shutdown: going to close sockets...
+2015-12-31T11:31:28.487+0800 I STORAGE  [serviceStopWorker] shutdown: waiting for fs preallocator...
+2015-12-31T11:31:28.488+0800 I STORAGE  [serviceStopWorker] shutdown: final commit...
+2015-12-31T11:31:28.636+0800 I JOURNAL  [serviceStopWorker] journalCleanup...
+2015-12-31T11:31:28.662+0800 I JOURNAL  [serviceStopWorker] removeJournalFiles
+2015-12-31T11:31:28.773+0800 I JOURNAL  [serviceStopWorker] Terminating durability thread ...
+2015-12-31T11:31:28.794+0800 I JOURNAL  [journal writer] Journal writer thread stopped
+2015-12-31T11:31:28.801+0800 I JOURNAL  [durability] Durability thread stopped
+2015-12-31T11:31:28.801+0800 I STORAGE  [serviceStopWorker] shutdown: closing all files...
+2015-12-31T11:31:28.828+0800 I STORAGE  [serviceStopWorker] closeAllFiles() finished
+2015-12-31T11:31:28.829+0800 I STORAGE  [serviceStopWorker] shutdown: removing fs lock...
+2015-12-31T11:31:28.845+0800 I CONTROL  [serviceStopWorker] dbexit:  rc: 49

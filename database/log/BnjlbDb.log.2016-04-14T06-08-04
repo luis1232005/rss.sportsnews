@@ -1,0 +1,39 @@
+2016-04-11T10:07:46.197+0800 I CONTROL  Hotfix KB2731284 or later update is not installed, will zero-out data files
+2016-04-11T10:07:46.207+0800 I CONTROL  Trying to start Windows service 'MongoDB'
+2016-04-11T10:07:46.207+0800 I STORAGE  Service running
+2016-04-11T10:07:46.238+0800 W -        [initandlisten] Detected unclean shutdown - D:\node\rss.sportsnews\database\mongod.lock is not empty.
+2016-04-11T10:07:46.266+0800 I JOURNAL  [initandlisten] journal dir=D:\node\rss.sportsnews\database\journal
+2016-04-11T10:07:46.267+0800 I JOURNAL  [initandlisten] recover begin
+2016-04-11T10:07:46.277+0800 I JOURNAL  [initandlisten] recover lsn: 0
+2016-04-11T10:07:46.277+0800 I JOURNAL  [initandlisten] recover D:\node\rss.sportsnews\database\journal\j._0
+2016-04-11T10:07:46.532+0800 I JOURNAL  [initandlisten] recover cleaning up
+2016-04-11T10:07:46.532+0800 I JOURNAL  [initandlisten] removeJournalFiles
+2016-04-11T10:07:46.533+0800 I JOURNAL  [initandlisten] recover done
+2016-04-11T10:07:46.550+0800 I JOURNAL  [durability] Durability thread started
+2016-04-11T10:07:46.551+0800 I JOURNAL  [journal writer] Journal writer thread started
+2016-04-11T10:07:46.749+0800 I CONTROL  [initandlisten] MongoDB starting : pid=2136 port=27017 dbpath=D:\node\rss.sportsnews\database 64-bit host=DST59985
+2016-04-11T10:07:46.749+0800 I CONTROL  [initandlisten] targetMinOS: Windows 7/Windows Server 2008 R2
+2016-04-11T10:07:46.749+0800 I CONTROL  [initandlisten] db version v3.0.3
+2016-04-11T10:07:46.749+0800 I CONTROL  [initandlisten] git version: b40106b36eecd1b4407eb1ad1af6bc60593c6105
+2016-04-11T10:07:46.749+0800 I CONTROL  [initandlisten] OpenSSL version: OpenSSL 1.0.1m-fips 19 Mar 2015
+2016-04-11T10:07:46.749+0800 I CONTROL  [initandlisten] build info: windows sys.getwindowsversion(major=6, minor=1, build=7601, platform=2, service_pack='Service Pack 1') BOOST_LIB_VERSION=1_49
+2016-04-11T10:07:46.749+0800 I CONTROL  [initandlisten] allocator: system
+2016-04-11T10:07:46.749+0800 I CONTROL  [initandlisten] options: { service: true, storage: { dbPath: "D:\node\rss.sportsnews\database" }, systemLog: { destination: "file", path: "D:\node\rss.sportsnews\database\log\BnjlbDb.log" } }
+2016-04-11T10:07:47.297+0800 I NETWORK  [initandlisten] waiting for connections on port 27017
+2016-04-14T14:07:31.380+0800 I CONTROL  [serviceShutdown] got SERVICE_CONTROL_SHUTDOWN request from Windows Service Control Manager, will terminate after current cmd ends
+2016-04-14T14:07:31.399+0800 I CONTROL  [serviceStopWorker] now exiting
+2016-04-14T14:07:31.399+0800 I NETWORK  [serviceStopWorker] shutdown: going to close listening sockets...
+2016-04-14T14:07:31.399+0800 I NETWORK  [serviceStopWorker] closing listening socket: 380
+2016-04-14T14:07:31.399+0800 I NETWORK  [serviceStopWorker] shutdown: going to flush diaglog...
+2016-04-14T14:07:31.399+0800 I NETWORK  [serviceStopWorker] shutdown: going to close sockets...
+2016-04-14T14:07:31.400+0800 I STORAGE  [serviceStopWorker] shutdown: waiting for fs preallocator...
+2016-04-14T14:07:31.400+0800 I STORAGE  [serviceStopWorker] shutdown: final commit...
+2016-04-14T14:07:31.414+0800 I JOURNAL  [serviceStopWorker] journalCleanup...
+2016-04-14T14:07:31.414+0800 I JOURNAL  [serviceStopWorker] removeJournalFiles
+2016-04-14T14:07:31.420+0800 I JOURNAL  [serviceStopWorker] Terminating durability thread ...
+2016-04-14T14:07:31.503+0800 I JOURNAL  [journal writer] Journal writer thread stopped
+2016-04-14T14:07:31.503+0800 I JOURNAL  [durability] Durability thread stopped
+2016-04-14T14:07:31.503+0800 I STORAGE  [serviceStopWorker] shutdown: closing all files...
+2016-04-14T14:07:31.505+0800 I STORAGE  [serviceStopWorker] closeAllFiles() finished
+2016-04-14T14:07:31.505+0800 I STORAGE  [serviceStopWorker] shutdown: removing fs lock...
+2016-04-14T14:07:31.505+0800 I CONTROL  [serviceStopWorker] dbexit:  rc: 49

@@ -1,0 +1,35 @@
+2016-01-14T10:04:32.162+0800 I CONTROL  Hotfix KB2731284 or later update is not installed, will zero-out data files
+2016-01-14T10:04:32.261+0800 I CONTROL  Trying to start Windows service 'MongoDB'
+2016-01-14T10:04:32.262+0800 I STORAGE  Service running
+2016-01-14T10:04:32.434+0800 W -        [initandlisten] Detected unclean shutdown - D:\node\rss.sportsnews\database\mongod.lock is not empty.
+2016-01-14T10:04:32.596+0800 I JOURNAL  [initandlisten] journal dir=D:\node\rss.sportsnews\database\journal
+2016-01-14T10:04:32.678+0800 I JOURNAL  [initandlisten] recover begin
+2016-01-14T10:04:32.679+0800 I JOURNAL  [initandlisten] info no lsn file in journal/ directory
+2016-01-14T10:04:32.679+0800 I JOURNAL  [initandlisten] recover lsn: 0
+2016-01-14T10:04:32.679+0800 I JOURNAL  [initandlisten] recover D:\node\rss.sportsnews\database\journal\j._0
+2016-01-14T10:04:34.883+0800 I JOURNAL  [initandlisten] recover cleaning up
+2016-01-14T10:04:34.883+0800 I JOURNAL  [initandlisten] removeJournalFiles
+2016-01-14T10:04:34.912+0800 I JOURNAL  [initandlisten] recover done
+2016-01-14T10:04:35.410+0800 I JOURNAL  [initandlisten] preallocateIsFaster=true 3.1
+2016-01-14T10:04:35.432+0800 I JOURNAL  [durability] Durability thread started
+2016-01-14T10:04:35.458+0800 I JOURNAL  [journal writer] Journal writer thread started
+2016-01-14T10:04:35.668+0800 I CONTROL  [initandlisten] MongoDB starting : pid=2224 port=27017 dbpath=D:\node\rss.sportsnews\database 64-bit host=DST59985
+2016-01-14T10:04:35.668+0800 I CONTROL  [initandlisten] targetMinOS: Windows 7/Windows Server 2008 R2
+2016-01-14T10:04:35.668+0800 I CONTROL  [initandlisten] db version v3.0.3
+2016-01-14T10:04:35.668+0800 I CONTROL  [initandlisten] git version: b40106b36eecd1b4407eb1ad1af6bc60593c6105
+2016-01-14T10:04:35.668+0800 I CONTROL  [initandlisten] OpenSSL version: OpenSSL 1.0.1m-fips 19 Mar 2015
+2016-01-14T10:04:35.668+0800 I CONTROL  [initandlisten] build info: windows sys.getwindowsversion(major=6, minor=1, build=7601, platform=2, service_pack='Service Pack 1') BOOST_LIB_VERSION=1_49
+2016-01-14T10:04:35.668+0800 I CONTROL  [initandlisten] allocator: system
+2016-01-14T10:04:35.668+0800 I CONTROL  [initandlisten] options: { service: true, storage: { dbPath: "D:\node\rss.sportsnews\database" }, systemLog: { destination: "file", path: "D:\node\rss.sportsnews\database\log\BnjlbDb.log" } }
+2016-01-14T10:05:43.418+0800 I NETWORK  [initandlisten] waiting for connections on port 27017
+2016-01-18T01:00:24.658+0800 I CONTROL  [DataFileSync] FlushFileBuffers failed: errno:8 Exec format error file: D:/node/rss.sportsnews/database/BnjlbDb.0
+2016-01-18T01:00:24.708+0800 I CONTROL  [DataFileSync] error syncing data to disk, probably a disk error
+2016-01-18T01:00:24.708+0800 I CONTROL  [DataFileSync]  shutting down immediately to avoid corruption
+2016-01-18T01:00:24.722+0800 I -        [DataFileSync] Fatal Assertion 17346
+2016-01-18T01:00:24.814+0800 I CONTROL  [DataFileSync] Stack trace failed, SymInitialize failed with error 8
+2016-01-18T01:00:24.814+0800 I CONTROL  [DataFileSync] 
+2016-01-18T01:00:24.824+0800 I -        [DataFileSync] 
+
+***aborting after fassert() failure
+
+
