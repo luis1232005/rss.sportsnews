@@ -2,6 +2,7 @@ var random_useragent = require('random-useragent');
 var userAgent = random_useragent.getRandom(function (ua) {
     return ua.deviceType === 'mobile' && ua.deviceModel === "iPhone" || ua.browserName === "Android Browser";
 });
+//https://images3.c-ctrip.com/dm/public/fuwubiaoqianicon01.png?v=20160511144533探测号码的连接
 
 console.log(userAgent);
 
@@ -54,12 +55,14 @@ function getPages(lists){
         //    }
         //    callback();
         //});
+        //https://images3.c-ctrip.com/dm/public/fuwubiaoqianicon01.png?v=20160511144533
         requestPage(item.infoID,function(error, response, body){
             if (!error && response.statusCode == 200) {
-                var number = body.match(/<li\s+class=\"yellow\">[1]\d{10}<\/li>/gi);
+                var number = body.match(/<div\s+class=\"phone\"\s+id=\"([1]\d{10})\">/gi);
                 if(!number){
                    // console.log("#"+item.infoID);
                     firstEmpty.push(item);
+                    console.log(item.infoID);
                 }else{
                     number = number.join('').match(/[1]\d{10}/gi);
                     //console.log("ok"+ number[0]);
@@ -73,6 +76,7 @@ function getPages(lists){
         });
     }, function (err) {
         if (err) console.error(err.message);
-        console.log(result);
+        //console.log(result);
+        //console.log(firstEmpty);
     })
 }
