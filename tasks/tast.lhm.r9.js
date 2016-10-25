@@ -32,6 +32,22 @@ function getAllGameIds(html,callback){
     return deferred.promise.nodeify(callback);
 }
 
+function formatHtml(html){
+    //var $ = cheerio.load(html);
+    //console.log($('#artibody'));
+    //var txt = $('#artibody').get(0).tagName;
+    //console.log(html);
+    html = html.replace(/\r\n/gmi,'').replace(/\n+|\r|\n/gmi,'');
+   // console.log(html);
+    var reg = /<!-- 正文内容 begin -->(.*)<!-- 正文内容 end -->/gmi;
+    var match = html.match(reg);
+
+    html =  (match && match[0]) || '';
+    match = html.match(/[0|1]\d&nbsp;[^>]*<\/p>/gmi);
+
+    console.log(match);
+}
+
 //获得合买页面
 function createPromiseList(urls,callbck){
     var urlFetchs = [];
@@ -42,7 +58,7 @@ function createPromiseList(urls,callbck){
             url: url
         }));
     });
-    return Q.allSettled(urlFetchs);
+    return Q.all(urlFetchs);
 }
 
 F.fetchPage({
@@ -51,5 +67,5 @@ F.fetchPage({
 .then(getAllGameIds)
 .then(createPromiseList)
 .then(function(htmls){
-    console.log(htmls);
+    formatHtml(htmls[0]);
 })
