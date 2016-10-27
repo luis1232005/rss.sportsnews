@@ -1,5 +1,5 @@
 /**
- * @des 陆慧明任九
+ * @des 陆慧明任九 爬虫可以使用 node-crawler这个模块比较简单 
  * @url http://sports.sina.com.cn/l/luhuiming/?from=wap
  *
  */
@@ -19,11 +19,13 @@ function getAllGameIds(html,callback){
         var $ = cheerio.load(html);
         $('.a04').each(function(){
             var text = $(this).text() || '';
-            if(text.indexOf('陆慧明任九') && $(this).attr('href')){
+
+            if(text.indexOf('任九') > -1 && text.indexOf('陆慧明') > -1 && $(this).attr('href')){
+                console.log(text.indexOf('任九'));
                 items.push($(this).attr('href'));
             }
         });
-
+        console.log(items);
         deferred.resolve(items);
     }catch(e){
         deferred.reject(err);
