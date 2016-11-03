@@ -1,6 +1,7 @@
 /**
- * @des 陆慧明任九 爬虫可以使用 node-crawler这个模块比较简单 
+ * @des 陆慧明任九 爬虫可以使用 node-crawler这个模块比较简单
  * @url http://sports.sina.com.cn/l/luhuiming/?from=wap
+ * 赢家推荐：http://m.thepaper.cn/list_26404
  *
  */
 
@@ -25,8 +26,7 @@ function getAllGameIds(html,callback){
                 items.push($(this).attr('href'));
             }
         });
-        console.log(items);
-        deferred.resolve(items);
+        deferred.resolve([items[0]]);
     }catch(e){
         deferred.reject(err);
     }
@@ -45,9 +45,9 @@ function formatHtml(html){
     var match = html.match(reg);
 
     html =  (match && match[0]) || '';
-    match = html.match(/[0|1]\d&nbsp;[^>]*<\/p>/gmi);
+    //match = html.match(/[0|1]\d&nbsp;[^>]*<\/p>/gmi);
 
-    console.log(match);
+    console.log(html);
 }
 
 //获得合买页面
