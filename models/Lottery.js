@@ -1,7 +1,8 @@
 /**
- * Lottery竞彩赛事表
+ * Lottery Model
+ * @des 竞彩赛事表
  * @author luis
- * @type {*|mongoose}
+ * @date 2016-11-23
  */
 //引入模块
 var mongoose = require('./../lib/mongodb').mongoose;
