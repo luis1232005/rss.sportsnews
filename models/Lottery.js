@@ -3,6 +3,7 @@
  * @des 竞彩赛事表
  * @author luis
  * @date 2016-11-23
+ * @dataurl http://live.aicai.com/
  */
 //引入模块
 var mongoose = require('./../lib/mongodb').mongoose;
