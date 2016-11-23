@@ -1,16 +1,20 @@
-2016-10-14T15:13:47.037+0800 I CONTROL  Hotfix KB2731284 or later update is not installed, will zero-out data files
-2016-10-14T15:13:47.047+0800 I CONTROL  Trying to start Windows service 'MongoDB'
-2016-10-14T15:13:47.047+0800 I STORAGE  Service running
-2016-10-14T15:13:47.114+0800 I JOURNAL  [initandlisten] journal dir=D:\node\rss.sportsnews\database\journal
-2016-10-14T15:13:47.116+0800 I JOURNAL  [initandlisten] recover : no journal files present, no recovery needed
-2016-10-14T15:13:47.149+0800 I JOURNAL  [durability] Durability thread started
-2016-10-14T15:13:47.151+0800 I JOURNAL  [journal writer] Journal writer thread started
-2016-10-14T15:13:47.234+0800 I CONTROL  [initandlisten] MongoDB starting : pid=2172 port=27017 dbpath=D:\node\rss.sportsnews\database 64-bit host=DST59985
-2016-10-14T15:13:47.235+0800 I CONTROL  [initandlisten] targetMinOS: Windows 7/Windows Server 2008 R2
-2016-10-14T15:13:47.235+0800 I CONTROL  [initandlisten] db version v3.0.3
-2016-10-14T15:13:47.235+0800 I CONTROL  [initandlisten] git version: b40106b36eecd1b4407eb1ad1af6bc60593c6105
-2016-10-14T15:13:47.235+0800 I CONTROL  [initandlisten] OpenSSL version: OpenSSL 1.0.1m-fips 19 Mar 2015
-2016-10-14T15:13:47.235+0800 I CONTROL  [initandlisten] build info: windows sys.getwindowsversion(major=6, minor=1, build=7601, platform=2, service_pack='Service Pack 1') BOOST_LIB_VERSION=1_49
-2016-10-14T15:13:47.235+0800 I CONTROL  [initandlisten] allocator: system
-2016-10-14T15:13:47.236+0800 I CONTROL  [initandlisten] options: { service: true, storage: { dbPath: "D:\node\rss.sportsnews\database" }, systemLog: { destination: "file", path: "D:\node\rss.sportsnews\database\log\BnjlbDb.log" } }
-2016-10-14T15:13:47.705+0800 I NETWORK  [initandlisten] waiting for connections on port 27017
+2016-11-08T11:27:38.499+0800 I CONTROL  Hotfix KB2731284 or later update is not installed, will zero-out data files
+2016-11-08T11:27:38.509+0800 I CONTROL  Trying to start Windows service 'MongoDB'
+2016-11-08T11:27:38.509+0800 I STORAGE  Service running
+2016-11-08T11:27:38.651+0800 I JOURNAL  [initandlisten] journal dir=D:\node\rss.sportsnews\database\journal
+2016-11-08T11:27:38.653+0800 I JOURNAL  [initandlisten] recover : no journal files present, no recovery needed
+2016-11-08T11:27:38.710+0800 I JOURNAL  [durability] Durability thread started
+2016-11-08T11:27:38.712+0800 I JOURNAL  [journal writer] Journal writer thread started
+2016-11-08T11:27:38.788+0800 I CONTROL  [initandlisten] MongoDB starting : pid=2148 port=27017 dbpath=D:\node\rss.sportsnews\database 64-bit host=DST59985
+2016-11-08T11:27:38.788+0800 I CONTROL  [initandlisten] targetMinOS: Windows 7/Windows Server 2008 R2
+2016-11-08T11:27:38.788+0800 I CONTROL  [initandlisten] db version v3.0.3
+2016-11-08T11:27:38.788+0800 I CONTROL  [initandlisten] git version: b40106b36eecd1b4407eb1ad1af6bc60593c6105
+2016-11-08T11:27:38.788+0800 I CONTROL  [initandlisten] OpenSSL version: OpenSSL 1.0.1m-fips 19 Mar 2015
+2016-11-08T11:27:38.788+0800 I CONTROL  [initandlisten] build info: windows sys.getwindowsversion(major=6, minor=1, build=7601, platform=2, service_pack='Service Pack 1') BOOST_LIB_VERSION=1_49
+2016-11-08T11:27:38.788+0800 I CONTROL  [initandlisten] allocator: system
+2016-11-08T11:27:38.789+0800 I CONTROL  [initandlisten] options: { service: true, storage: { dbPath: "D:\node\rss.sportsnews\database" }, systemLog: { destination: "file", path: "D:\node\rss.sportsnews\database\log\BnjlbDb.log" } }
+2016-11-08T11:27:39.278+0800 I NETWORK  [initandlisten] waiting for connections on port 27017
+2016-11-23T14:17:19.317+0800 I NETWORK  [initandlisten] connection accepted from 10.9.118.10:50465 #1 (1 connection now open)
+2016-11-23T14:17:19.734+0800 I NETWORK  [conn1] end connection 10.9.118.10:50465 (0 connections now open)
+2016-11-23T14:18:06.502+0800 I NETWORK  [initandlisten] connection accepted from 10.9.118.10:36403 #2 (1 connection now open)
+2016-11-23T14:18:06.510+0800 I NETWORK  [conn2] end connection 10.9.118.10:36403 (0 connections now open)
