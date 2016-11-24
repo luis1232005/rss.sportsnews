@@ -12,19 +12,28 @@ var Schema = mongoose.Schema;
 // create a Lottery schema
 var LotterySchema = new Schema({
     name: String,//对战名称
-    home: String,//主队名称
-    guest: String,//客队名称
-    result: {type:Number,default:-1},//结果
+    home: {
+        type: String,
+        required: [true, 'Why no home team?']
+    },//主队名称
+    guest: {
+        type: String,
+        required: [true, 'Why no guest team?']
+    },//客队名称
+    result: {type: Number, default: -1},//结果
     score: String,//比分
     play: [{
-        playType:Number,//玩法 1：不让球玩法，2：让球玩法
-        odds:String,//对应赔率
-        concedePoint:Number,//让几球
-        result: {type:Number,default:-1}
+        playType: {
+            type: String,
+            enum: ['1', '2']
+        },//玩法 '1'：不让球玩法，'2'：让球玩法
+        odds: String,//对应赔率
+        concedePoint: Number,//让几球
+        result: {type: Number, default: -1}
     }],
-    playDate: { type: Date,default:Date.now },
-    updateDate:Date,
-    createDate:Date
+    playDate: {type: Date, default: Date.now},
+    updateDate: Date,
+    createDate: Date
 });
 
 //LotterySchema.virtual('pubDateTimeStamp').get(function(){
@@ -35,14 +44,14 @@ var LotterySchema = new Schema({
 // we need to create a model using it
 var Lottery = mongoose.model('Lottery', LotterySchema);
 
-var LotteryDAO = function(){
+var LotteryDAO = function () {
     //todo:constructor
 };
 
-LotteryDAO.prototype.save = function(obj, callback) {
+LotteryDAO.prototype.save = function (obj, callback) {
     var instance = new Lottery(obj);
-    instance.save(function(err,cb){
-        callback(err,cb);
+    instance.save(function (err, cb) {
+        callback(err, cb);
     });
 };
 

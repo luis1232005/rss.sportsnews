@@ -32,7 +32,7 @@ Lottery.save({
     guest: "测试2",//客队名称
     score: "",//比分
     play: [{
-        playType:1,//玩法 1：不让球玩法，2：让球玩法
+        playType: '1',//玩法 1：不让球玩法，2：让球玩法
         odds:"1.2|3.2|6.7",//对应赔率
         concedePoint:0,//让几球
     }],
@@ -41,7 +41,7 @@ Lottery.save({
     createDate: new Date()
 },function(err){
     if(err){
-        console.log("error");
+        console.log(err.errors);
         throw err;
         return;
     }
