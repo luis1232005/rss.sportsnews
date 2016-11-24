@@ -11,6 +11,7 @@ var Schema = mongoose.Schema;
 
 // create a Lottery schema
 var LotterySchema = new Schema({
+    saishi: String,//赛事
     name: String,//对战名称
     home: {
         type: String,
@@ -20,7 +21,7 @@ var LotterySchema = new Schema({
         type: String,
         required: [true, 'Why no guest team?']
     },//客队名称
-    result: {type: Number, default: -1},//结果
+    result: Number,//结果
     score: String,//比分
     play: [{
         playType: {
@@ -29,9 +30,10 @@ var LotterySchema = new Schema({
         },//玩法 '1'：不让球玩法，'2'：让球玩法
         odds: String,//对应赔率
         concedePoint: Number,//让几球
-        result: {type: Number, default: -1}
+        result: Number //进球差
     }],
     playDate: {type: Date, default: Date.now},
+    playDateStr: String,
     updateDate: Date,
     createDate: Date
 });
@@ -64,12 +66,12 @@ LotteryDAO.prototype.save = function (obj, callback) {
 //}
 //
 //
-//LotteryDAO.prototype.findByName = function(name, callback) {
-//    name = new RegExp('.*' + name + '.*');
-//    Lottery.find({title:name}, function(err, cb){
-//        callback(err, cb);
-//    });
-//};
+LotteryDAO.prototype.findByName = function(name,callback) {
+    name = new RegExp('.*' + name + '.*');
+    Lottery.find({name:name}, function(err, cb){
+        callback(err, cb);
+    });
+};
 //
 //LotteryDAO.prototype.findLotteryByPubDate = function(date,callback){
 //    var date = {
