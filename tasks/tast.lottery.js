@@ -4,9 +4,8 @@
 //模块载入
 var F = require('../lib/pfetch');
 var cheerio = require('cheerio');
-var Q = require('q');
 var fs = require('fs');
-var parser = require('json-parser');
+var logger = require("../lib/loghelper").helper;
 
 var Lottery = require('../models/Lottery');
 
@@ -97,7 +96,7 @@ function fetchLottery(dateObj) {
     }
     //console.log(dateObj);
     if (!dateObj || !dateObj.sDateStr || !dateObj.lDateStr) {
-        //todo:抓取错误
+        logger.writeErr('getFormatDateObj date error!');
         return;
     }
 
@@ -107,15 +106,18 @@ function fetchLottery(dateObj) {
         items: []
     };
 
+    var peiLvUrl = 'http://live.aicai.com/static/no_cache/jc/zcnew/data/hist/' + dateObj.sDateStr + 'zcRefer.js';
+    var gamesUrl = 'http://live.aicai.com/jsbf/timelyscore!dynamicMatchDataForJczq.htm?dateTime=' + dateObj.lDateStr;
+
     F.fetchPage({
-        url: 'http://live.aicai.com/static/no_cache/jc/zcnew/data/hist/' + dateObj.sDateStr + 'zcRefer.js',
+        url: peiLvUrl,
         charset: 'utf-8'
     }).then(function (addonCt) {
         try {
             var peilvMaps = parse_json_by_eval(addonCt);
 
             F.fetchPage({
-                url: 'http://live.aicai.com/jsbf/timelyscore!dynamicMatchDataForJczq.htm?dateTime=' + dateObj.lDateStr
+                url: gamesUrl
             }).then(function (ct) {
                 try {
                     var ctObj = JSON.parse(ct);
@@ -215,18 +217,17 @@ function fetchLottery(dateObj) {
                             // console.log(item.name + "_" + item.playDate);
                             Lottery.findOneById(item.id, function (err, findItem) {
                                 if (err) {
-                                    //todo:记录日志
+                                    logger.writeErr('opt db findOneById is error' + (err.message||'') );
                                     return;
                                 }
                                 //console.log(item.name + "_" + item.playDateStr,items.length);
                                 if (!findItem) {
                                     Lottery.save(item, function (err) {
                                         if (err) {
-                                            //todo:记录日志
-                                            console.log(err);
+                                            logger.writeErr('opt db save is error' + (err.message||'') );
                                             return;
                                         }
-                                        console.log('save sucess');
+                                        logger.writeInfo(item.id + "save sucess!");
                                     });
                                 } else {
                                     if (findItem.id && findItem.id == item.id && !item.finish && item.result != -10000) {
@@ -246,8 +247,10 @@ function fetchLottery(dateObj) {
                                         findItem.updateDate = new Date();
 
                                         findItem.save();
+
+                                        logger.writeInfo(item.id + "update sucess!");
                                     }else{
-                                        console.log("数据无效，不更新！");
+                                        logger.writeWarn(item.id+ "-on use update!");
                                     }
                                 }
                             });
@@ -255,17 +258,14 @@ function fetchLottery(dateObj) {
 
                         //console.log(fetchFormatObj.items.length);
                     } else {
-                        //todo:错误日志
-                        console.log(e);
+                        logger.writeErr('get ct is error');
                     }
                 } catch (e) {
-                    //todo:记录抓取失败
-                    console.log(e);
+                    logger.writeErr('get addons error,url:' + gamesUrl + (e.message||'') );
                 }
             });
         } catch (e) {
-            console.log(e);
-            //todo:记录抓取失败
+            logger.writeErr('get addons error,url:' + peiLvUrl + (e.message||'') );
         }
     });
 }
