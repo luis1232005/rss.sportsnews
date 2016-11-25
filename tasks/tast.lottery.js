@@ -9,6 +9,8 @@ var logger = require("../lib/loghelper").helper;
 
 var Lottery = require('../models/Lottery');
 
+var schedule = require("node-schedule");
+
 //console.log(addonsMap);
 
 function replaceFnc(str) {
@@ -271,8 +273,31 @@ function fetchLottery(dateObj) {
 }
 
 //执行
-var now = new Date().getTime();
-var yesterday = new Date(now - 24 * 60 * 60 * 1000);
-var yesterdayObj = getFormatDateObj(yesterday);
-fetchLottery();
-fetchLottery(yesterdayObj);
+
+function exeFnc(){
+    var now = new Date().getTime();
+    var yesterday = new Date(now - 24 * 60 * 60 * 1000);
+    var yesterdayObj = getFormatDateObj(yesterday);
+    fetchLottery();
+    fetchLottery(yesterdayObj);
+}
+
+
+function scheduleRecurrenceRule(){
+
+    var rule = new schedule.RecurrenceRule();
+    // rule.dayOfWeek = 2;
+    // rule.month = 3;
+    // rule.dayOfMonth = 1;
+    // rule.hour = 1;
+    rule.minute = 58;
+    //rule.second = 0;
+
+    schedule.scheduleJob(rule, function(){
+        exeFnc();
+        logger.writeInfo("定时器开始执行一次！");
+    });
+
+}
+
+scheduleRecurrenceRule();

@@ -31,6 +31,7 @@
     "log4js": "^1.0.1",
     "mongoose": "^4.0.5",
     "morgan": "^1.6.0",
+    "node-schedule": "^1.2.0",
     "q": "^1.4.1",
     "random-useragent": "^0.3.0",
     "serve-favicon": "^2.3.0",
