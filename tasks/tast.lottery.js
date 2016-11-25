@@ -32,8 +32,8 @@ function formatDate(date, fmt) { //author: meizz
     return fmt;
 }
 
-function getFormatDateObj() {
-    var now = new Date();
+function getFormatDateObj(date) {
+    var now = date || new Date();
     return {
         lDateStr: formatDate(now, "yyyy-MM-dd"),
         sDateStr: formatDate(now, "yyMMdd")
@@ -277,7 +277,8 @@ function fetchLottery(dateObj) {
 }
 
 //执行
-fetchLottery({
-    lDateStr: '2016-11-24',
-    sDateStr: '161124'
-});
+var now = new Date().getTime();
+var yesterday = new Date(now - 24 * 60 * 60 * 1000);
+var yesterdayObj = getFormatDateObj(yesterday);
+fetchLottery();
+fetchLottery(yesterdayObj);
