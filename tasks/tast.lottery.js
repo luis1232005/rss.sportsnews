@@ -229,9 +229,9 @@ function fetchLottery(dateObj) {
                                         console.log('save sucess');
                                     });
                                 } else {
-                                    if (findItem.id && findItem.id == item.id && !item.finish) {
+                                    if (findItem.id && findItem.id == item.id && !item.finish && item.result != -10000) {
 
-                                        console.log(findItem);
+                                        //console.log(findItem);
 
                                         findItem.finish = item.finish;
                                         findItem.score = item.score;
@@ -245,15 +245,9 @@ function fetchLottery(dateObj) {
 
                                         findItem.updateDate = new Date();
 
-                                        Lottery.update(findItem._id, findItem, function (err) {
-                                            console.log("@##################");
-                                            if (err) {
-                                                //todo:记录日志
-                                                console.log(err);
-                                                return;
-                                            }
-                                            console.log('update sucess!');
-                                        })
+                                        findItem.save();
+                                    }else{
+                                        console.log("数据无效，不更新！");
                                     }
                                 }
                             });

@@ -68,6 +68,7 @@ LotteryDAO.prototype.findByIdAndUpdate = function(obj,callback){
 }
 
 LotteryDAO.prototype.update = function(oid,obj,callback){
+    delete obj._id;
     Lottery.update({ _id : oid },obj, function(err,cb){
         callback(err, cb);
     });
