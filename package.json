@@ -28,6 +28,7 @@
     "express": "^4.12.4",
     "iconv-lite": "^0.4.10",
     "json-parser": "^1.1.5",
+    "log4js": "^1.0.1",
     "mongoose": "^4.0.5",
     "morgan": "^1.6.0",
     "q": "^1.4.1",
