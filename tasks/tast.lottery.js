@@ -232,7 +232,7 @@ function fetchLottery(dateObj) {
                                         logger.writeInfo(item.id + "save sucess!");
                                     });
                                 } else {
-                                    if (findItem.id && findItem.id == item.id && !item.finish && item.result != -10000) {
+                                    if (findItem.id && findItem.id == item.id && !findItem.finish && item.result != -10000) {
 
                                         //console.log(findItem);
 
