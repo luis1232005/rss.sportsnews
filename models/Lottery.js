@@ -12,7 +12,9 @@ var Schema = mongoose.Schema;
 // create a Lottery schema
 var LotterySchema = new Schema({
     saishi: String,//赛事
+    id: String,//新浪赛事id
     name: String,//对战名称
+    finish: {type:Boolean,default:false},//是否完场
     home: {
         type: String,
         required: [true, 'Why no home team?']
@@ -57,18 +59,30 @@ LotteryDAO.prototype.save = function (obj, callback) {
     });
 };
 
-//LotteryDAO.prototype.findByIdAndUpdate = function(obj,callback){
-//    var _id=obj._id;
-//    delete obj._id;
-//    Lottery.findOneAndUpdate(_id, obj, function(err,cb){
-//        callback(err, cb);
-//    });
-//}
-//
-//
+LotteryDAO.prototype.findByIdAndUpdate = function(obj,callback){
+    var _id=obj._id;
+    delete obj._id;
+    Lottery.findOneAndUpdate(_id, obj, function(err,cb){
+        callback(err, cb);
+    });
+}
+
+LotteryDAO.prototype.update = function(oid,obj,callback){
+    Lottery.update({ _id : oid },obj, function(err,cb){
+        callback(err, cb);
+    });
+}
+
 LotteryDAO.prototype.findByName = function(name,callback) {
     name = new RegExp('.*' + name + '.*');
     Lottery.find({name:name}, function(err, cb){
+        callback(err, cb);
+    });
+};
+
+LotteryDAO.prototype.findOneById = function(id,callback) {
+    id = ''+ id;
+    Lottery.findOne({id:id}, function(err, cb){
         callback(err, cb);
     });
 };

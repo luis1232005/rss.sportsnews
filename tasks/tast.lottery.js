@@ -12,11 +12,11 @@ var Lottery = require('../models/Lottery');
 
 //console.log(addonsMap);
 
-function replaceFnc(str){
-    return str.replace(/^\s+|\s+$/gmi,"").replace(/\t|\r|\n/gmi,"");
+function replaceFnc(str) {
+    return str.replace(/^\s+|\s+$/gmi, "").replace(/\t|\r|\n/gmi, "");
 }
 
-function formatDate(date,fmt) { //author: meizz
+function formatDate(date, fmt) { //author: meizz
     var o = {
         "M+": date.getMonth() + 1, //月份
         "d+": date.getDate(), //日
@@ -32,70 +32,73 @@ function formatDate(date,fmt) { //author: meizz
     return fmt;
 }
 
-function getFormatDateObj(){
+function getFormatDateObj() {
     var now = new Date();
     return {
-        lDateStr: formatDate(now,"yyyy-MM-dd"),
-        sDateStr: formatDate(now,"yyMMdd")
+        lDateStr: formatDate(now, "yyyy-MM-dd"),
+        sDateStr: formatDate(now, "yyMMdd")
     }
 }
 
-var parse_json_by_eval = function(str){
-    return eval('('+str+')');
+var parse_json_by_eval = function (str) {
+    return eval('(' + str + ')');
 }
 
-function formatName(name){
-    var matchs = name.match(/\](.*)\[/gi);
+function formatName(name) {
+    var matchs = name.match(/\](.*)\[|\d+(.*)\d+/gi);
     var score = '';
     var scoreMaths = null;
     var home = '';
     var guest = '';
 
-    if(matchs && matchs[0]){
+    var ifWc = !!(name.indexOf('完场') > -1);
+
+    if (matchs && matchs[0]) {
         var tempStr = matchs[0];
-        if(/\d:\d/gi.test(tempStr)){
+        if (/\d:\d/gi.test(tempStr)) {
             scoreMaths = tempStr.match(/\d:\d/gi);
             score = (scoreMaths && scoreMaths[0]) || '';
         }
 
-        tempStr = tempStr.replace(/\d|\[|\]/gi,"").replace(":","VS");
+        tempStr = tempStr.replace(/\d|\[|\]|^\d+|\d+$/gi, "").replace(":", "VS");
         home = tempStr.split("VS")[0];
         guest = tempStr.split("VS")[1];
 
         return {
-            name : tempStr,
-            home : home,
-            guest : guest,
-            score : score
+            name: tempStr,
+            home: home,
+            guest: guest,
+            score: score,
+            finish: ifWc
         }
-    }else{
-        if(name.indexOf('VS')>-1){
+    } else {
+        if (name.indexOf('VS') > -1) {
             matchs = name.match(/00(.*)00/gi);
             tempStr = (matchs && matchs[0]) || '';
-            tempStr = tempStr.replace(/00/gi,'');
+            tempStr = tempStr.replace(/00/gi, '');
             home = tempStr.split("VS")[0];
             guest = tempStr.split("VS")[1];
 
             return {
-                name : tempStr,
-                home : home,
-                guest : guest,
-                score : ''
+                name: tempStr,
+                home: home,
+                guest: guest,
+                score: ''
             }
-        }else{
+        } else {
             return null;
         }
     }
 }
 
-function fetchLottery(dateObj){
-    if(!dateObj){
+function fetchLottery(dateObj) {
+    if (!dateObj) {
         dateObj = getFormatDateObj();
     }
     //console.log(dateObj);
-    if(!dateObj || !dateObj.sDateStr || !dateObj.lDateStr){
+    if (!dateObj || !dateObj.sDateStr || !dateObj.lDateStr) {
         //todo:抓取错误
-        return ;
+        return;
     }
 
     //保存抓取的数据
@@ -105,75 +108,82 @@ function fetchLottery(dateObj){
     };
 
     F.fetchPage({
-        url:'http://live.aicai.com/static/no_cache/jc/zcnew/data/hist/'+ dateObj.sDateStr +'zcRefer.js',
+        url: 'http://live.aicai.com/static/no_cache/jc/zcnew/data/hist/' + dateObj.sDateStr + 'zcRefer.js',
         charset: 'utf-8'
-    }).then(function(addonCt){
-        try{
+    }).then(function (addonCt) {
+        try {
             var peilvMaps = parse_json_by_eval(addonCt);
 
             F.fetchPage({
-                url: 'http://live.aicai.com/jsbf/timelyscore!dynamicMatchDataForJczq.htm?dateTime='+ dateObj.lDateStr
-            }).then(function(ct){
-                try{
+                url: 'http://live.aicai.com/jsbf/timelyscore!dynamicMatchDataForJczq.htm?dateTime=' + dateObj.lDateStr
+            }).then(function (ct) {
+                try {
                     var ctObj = JSON.parse(ct);
                     var html = "";
-                    if(ctObj.status && ctObj.status == "success" && ctObj.result && ctObj.result.jsbf_matchs){
+                    if (ctObj.status && ctObj.status == "success" && ctObj.result && ctObj.result.jsbf_matchs) {
                         html = ctObj.result.jsbf_matchs;
                         var $ = cheerio.load(html);
 
-                        var item = null;
-                        var nameObj = null;
-                        var tempName = '';
-                        var playModes = '';
-                        var addonsTemp = '';
-                        var id = '';
+                        $(".tbody_body tr").each(function () {
 
-                        var saishi = '';
-                        var playDate = '';
-                        var name = '';
-                        var home = '';
-                        var guest = '';
-                        var score = '';
-                        var rqAddons = '';//让球赔率
-                        var noRqAddons = '';//不让球赔率
+                            var item = null;
+                            var nameObj = null;
+                            var tempName = '';
+                            var playModes = '';
+                            var addonsTemp = '';
+                            var id = '';
 
-                        $(".tbody_body tr").each(function(){
-                            var $tds = $("td",this);
+                            var saishi = '';
+                            var playDate = '';
+                            var name = '';
+                            var home = '';
+                            var guest = '';
+                            var score = '';
+                            var rqAddons = '';//让球赔率
+                            var noRqAddons = '';//不让球赔率
+                            var finish = false;//是否完场
+
+                            var $tds = $("td", this);
 
                             id = $tds.eq(0).find(".jq_selectmatch").eq(0).attr("id");
-                            id = id.replace('jq_','');
+                            id = id.replace('jq_', '');
 
                             saishi = replaceFnc($tds.eq(2).text());
-                            playDate = replaceFnc($tds.eq(3).text()).substr(0,11);
+                            playDate = replaceFnc($tds.eq(3).text()).substr(0, 11);
                             tempName = replaceFnc($tds.eq(4).text());
                             playModes = $tds.eq(6).text();
                             addonsTemp = $tds.eq(7).text();
 
                             nameObj = formatName(tempName);
 
-                            if(nameObj){
+                            //console.log(tempName);
+
+                            if (nameObj) {
                                 name = (nameObj && nameObj.name) || '';
                                 home = (nameObj && nameObj.home) || '';
                                 guest = (nameObj && nameObj.guest) || '';
                                 score = (nameObj && nameObj.score) || '';
+                                finish = nameObj.finish;
                             }
 
                             //抓取赔率
-                            if(peilvMaps && id && peilvMaps[id] && peilvMaps[id].sp){
-                                rqAddons = peilvMaps[id].sp.jczq_spf_gd.replace(/-/gi,'|');
-                                noRqAddons = peilvMaps[id].sp.jczq_xspf_gd.replace(/-/gi,'|');
+                            if (peilvMaps && id && peilvMaps[id] && peilvMaps[id].sp) {
+                                rqAddons = peilvMaps[id].sp.jczq_spf_gd.replace(/-/gi, '|');
+                                noRqAddons = peilvMaps[id].sp.jczq_xspf_gd.replace(/-/gi, '|');
                             }
                             //console.log(playModes,rqAddons,noRqAddons);
 
                             var temResult = -10000;
-                            if(score){
+                            if (score) {
                                 temResult = parseInt(score.split(':')[0]) - parseInt(score.split(':')[1]);
                             }
                             //console.log(name + "_"+ new Date().getFullYear() + "-" + playDate);
 
                             fetchFormatObj.items.push({
                                 saishi: saishi,
-                                name: name + "_"+ new Date().getFullYear() + "-" + playDate,//对战名称
+                                id: id,
+                                finish: finish,
+                                name: home + "VS" + guest,//对战名称
                                 home: home,//主队名称
                                 guest: guest,//客队名称
                                 result: temResult,//结果
@@ -183,11 +193,11 @@ function fetchLottery(dateObj){
                                     odds: noRqAddons,//对应赔率
                                     concedePoint: 0,//让几球
                                     result: temResult
-                                },{
+                                }, {
                                     playType: '2',//玩法 '1'：不让球玩法，'2'：让球玩法
                                     odds: rqAddons,//对应赔率
                                     concedePoint: parseInt(playModes),//让几球
-                                    result: (temResult == -10000) ? temResult: ( temResult + parseInt(playModes))
+                                    result: (temResult == -10000) ? temResult : ( temResult + parseInt(playModes))
                                 }],
                                 playDate: new Date(playDate),
                                 playDateStr: new Date().getFullYear() + "-" + playDate,
@@ -195,45 +205,71 @@ function fetchLottery(dateObj){
                                 createDate: new Date()
                             });
 
-                            //console.log(id,parseInt(playModes),name,home,guest,score, rqAddons,temResult,noRqAddons,rqAddons);
+                            //console.log(finish, id, parseInt(playModes), name, home, guest, score, rqAddons, temResult, noRqAddons, rqAddons);
 
                         });
 
+                        // console.log(fetchFormatObj.items);
 
-
-                        fetchFormatObj.items.forEach(function(item){
-                           // console.log(item.name + "_" + item.playDate);
-                            Lottery.findByName(item.name,function(err,items){
-                                if(err){
+                        fetchFormatObj.items.forEach(function (item) {
+                            // console.log(item.name + "_" + item.playDate);
+                            Lottery.findOneById(item.id, function (err, findItem) {
+                                if (err) {
                                     //todo:记录日志
                                     return;
                                 }
                                 //console.log(item.name + "_" + item.playDateStr,items.length);
-                                if(items.length<=0){
-                                    Lottery.save(item,function(err){
-                                        if(err){
+                                if (!findItem) {
+                                    Lottery.save(item, function (err) {
+                                        if (err) {
                                             //todo:记录日志
                                             console.log(err);
                                             return;
                                         }
-
                                         console.log('save sucess');
                                     });
+                                } else {
+                                    if (findItem.id && findItem.id == item.id && !item.finish) {
+
+                                        console.log(findItem);
+
+                                        findItem.finish = item.finish;
+                                        findItem.score = item.score;
+                                        findItem.result = item.result;
+                                        findItem.play[0].odds = item.play[0].odds;
+                                        findItem.play[0].result = item.play[0].result;
+
+                                        findItem.play[1].odds = item.play[1].odds;
+                                        findItem.play[1].concedePoint = item.play[1].concedePoint;
+                                        findItem.play[1].result = item.play[1].result;
+
+                                        findItem.updateDate = new Date();
+
+                                        Lottery.update(findItem._id, findItem, function (err) {
+                                            console.log("@##################");
+                                            if (err) {
+                                                //todo:记录日志
+                                                console.log(err);
+                                                return;
+                                            }
+                                            console.log('update sucess!');
+                                        })
+                                    }
                                 }
                             });
                         });
 
                         //console.log(fetchFormatObj.items.length);
-                    }else{
+                    } else {
                         //todo:错误日志
                         console.log(e);
                     }
-                }catch(e){
+                } catch (e) {
                     //todo:记录抓取失败
                     console.log(e);
                 }
             });
-        }catch(e){
+        } catch (e) {
             console.log(e);
             //todo:记录抓取失败
         }
@@ -241,4 +277,7 @@ function fetchLottery(dateObj){
 }
 
 //执行
-fetchLottery();
+fetchLottery({
+    lDateStr: '2016-11-24',
+    sDateStr: '161124'
+});
