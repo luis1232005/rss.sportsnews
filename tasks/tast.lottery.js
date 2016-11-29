@@ -255,13 +255,13 @@ function fetchLottery(dateObj) {
         })
         .then(lotterySaveAll)
         .then(function(items){
-            console.log(items.length);
+            //console.log(items.length);
         })
         .catch(function (err) {
-            console.log(err);
+            logger.writeErr('promise err,'+ (err.message || ""));
         })
         .done(function () {
-            console.log("done");
+            process.exit();
         });
 }
 
