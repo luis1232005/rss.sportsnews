@@ -117,12 +117,13 @@ function fetchLottery(dateObj) {
     }).then(function (addonCt) {
         //try {
             var peilvMaps = parse_json_by_eval(addonCt);
-
+            console.log(peilvMaps);
             F.fetchPage({
                 url: gamesUrl
             }).then(function (ct) {
                 //try {
                     var ctObj = JSON.parse(ct);
+                    console.log(ctObj);
                     var html = "";
                     if (ctObj.status && ctObj.status == "success" && ctObj.result && ctObj.result.jsbf_matchs) {
                         html = ctObj.result.jsbf_matchs;
