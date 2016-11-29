@@ -33,5 +33,6 @@
     "logInfo": "DEBUG",
     "logWarn": "DEBUG",
     "logErr": "DEBUG"
-  }
+  },
+  "debug":true
 }
