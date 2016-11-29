@@ -2,18 +2,18 @@ var News = require('../models/News');
 var Lottery = require('../models/Lottery');
 
 
-//News.save({
-//    title:'测试一123',
-//    author: 'luis'
-//},function(err){
-//    if(err){
-//        console.log("error");
-//        throw err;
-//        return;
-//    }
-//
-//    console.log("保存成功!");
-//});
+News.save({
+    title:'测试一123',
+    author: 'luis'
+},function(err){
+    if(err){
+        console.log("error");
+        throw err;
+        return;
+    }
+
+    console.log("保存成功!");
+});
 
 
 //News.findByName('.*巴萨.*',function(err,item){
@@ -49,6 +49,6 @@ var Lottery = require('../models/Lottery');
 //    console.log("保存成功!");
 //});
 
-Lottery.findByName("测试1vs测试2",function(err){
-    console.log(arguments);
-});
+//Lottery.findByName("测试1vs测试2",function(err){
+//    console.log(arguments);
+//});
