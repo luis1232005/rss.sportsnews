@@ -111,14 +111,164 @@ function fetchLottery(dateObj) {
     var peiLvUrl = 'http://live.aicai.com/static/no_cache/jc/zcnew/data/hist/' + dateObj.sDateStr + 'zcRefer.js';
     var gamesUrl = 'http://live.aicai.com/jsbf/timelyscore!dynamicMatchDataForJczq.htm?dateTime=' + dateObj.lDateStr;
 
-    console.log(peiLvUrl);
-    
     F.fetchPage({
         url: peiLvUrl,
         charset: 'utf-8'
     }).then(function (addonCt) {
-        var peilvMaps = parse_json_by_eval(addonCt);
-        console.log(peilvMaps);
+        //try {
+            var peilvMaps = parse_json_by_eval(addonCt);
+
+            F.fetchPage({
+                url: gamesUrl
+            }).then(function (ct) {
+                //try {
+                    var ctObj = JSON.parse(ct);
+                    var html = "";
+                    if (ctObj.status && ctObj.status == "success" && ctObj.result && ctObj.result.jsbf_matchs) {
+                        html = ctObj.result.jsbf_matchs;
+                        var $ = cheerio.load(html);
+
+                        $(".tbody_body tr").each(function () {
+
+                            var item = null;
+                            var nameObj = null;
+                            var tempName = '';
+                            var playModes = '';
+                            var addonsTemp = '';
+                            var id = '';
+
+                            var saishi = '';
+                            var playDate = '';
+                            var name = '';
+                            var home = '';
+                            var guest = '';
+                            var score = '';
+                            var rqAddons = '';//让球赔率
+                            var noRqAddons = '';//不让球赔率
+                            var finish = false;//是否完场
+
+                            var $tds = $("td", this);
+
+                            id = $tds.eq(0).find(".jq_selectmatch").eq(0).attr("id");
+                            id = id.replace('jq_', '');
+
+                            saishi = replaceFnc($tds.eq(2).text());
+                            playDate = replaceFnc($tds.eq(3).text()).substr(0, 11);
+                            tempName = replaceFnc($tds.eq(4).text());
+                            playModes = $tds.eq(6).text();
+                            addonsTemp = $tds.eq(7).text();
+
+                            nameObj = formatName(tempName);
+
+                            //console.log(tempName);
+
+                            if (nameObj) {
+                                name = (nameObj && nameObj.name) || '';
+                                home = (nameObj && nameObj.home) || '';
+                                guest = (nameObj && nameObj.guest) || '';
+                                score = (nameObj && nameObj.score) || '';
+                                finish = nameObj.finish;
+                            }
+
+                            //抓取赔率
+                            if (peilvMaps && id && peilvMaps[id] && peilvMaps[id].sp) {
+                                rqAddons = peilvMaps[id].sp.jczq_spf_gd.replace(/-/gi, '|');
+                                noRqAddons = peilvMaps[id].sp.jczq_xspf_gd.replace(/-/gi, '|');
+                            }
+                            //console.log(playModes,rqAddons,noRqAddons);
+
+                            var temResult = -10000;
+                            if (score) {
+                                temResult = parseInt(score.split(':')[0]) - parseInt(score.split(':')[1]);
+                            }
+                            //console.log(name + "_"+ new Date().getFullYear() + "-" + playDate);
+
+                            fetchFormatObj.items.push({
+                                saishi: saishi,
+                                id: id,
+                                finish: finish,
+                                name: home + "VS" + guest,//对战名称
+                                home: home,//主队名称
+                                guest: guest,//客队名称
+                                result: temResult,//结果
+                                score: score,//比分
+                                play: [{
+                                    playType: '1',//玩法 '1'：不让球玩法，'2'：让球玩法
+                                    odds: noRqAddons,//对应赔率
+                                    concedePoint: 0,//让几球
+                                    result: temResult
+                                }, {
+                                    playType: '2',//玩法 '1'：不让球玩法，'2'：让球玩法
+                                    odds: rqAddons,//对应赔率
+                                    concedePoint: parseInt(playModes),//让几球
+                                    result: (temResult == -10000) ? temResult : ( temResult + parseInt(playModes))
+                                }],
+                                playDate: new Date(playDate),
+                                playDateStr: new Date().getFullYear() + "-" + playDate,
+                                updateDate: new Date(),
+                                createDate: new Date()
+                            });
+
+                            //console.log(finish, id, parseInt(playModes), name, home, guest, score, rqAddons, temResult, noRqAddons, rqAddons);
+
+                        });
+
+                        // console.log(fetchFormatObj.items);
+
+                        fetchFormatObj.items.forEach(function (item) {
+                            // console.log(item.name + "_" + item.playDate);
+                            Lottery.findOneById(item.id, function (err, findItem) {
+                                if (err) {
+                                    logger.writeErr('opt db findOneById is error' + (err.message||'') );
+                                    return;
+                                }
+                                //console.log(item.name + "_" + item.playDateStr,items.length);
+                                if (!findItem) {
+                                    Lottery.save(item, function (err) {
+                                        if (err) {
+                                            logger.writeErr('opt db save is error' + (err.message||'') );
+                                            return;
+                                        }
+                                        logger.writeInfo(item.id + "save sucess!");
+                                    });
+                                } else {
+                                    if (findItem.id && findItem.id == item.id && !findItem.finish && item.result != -10000) {
+
+                                        //console.log(findItem);
+
+                                        findItem.finish = item.finish;
+                                        findItem.score = item.score;
+                                        findItem.result = item.result;
+                                        findItem.play[0].odds = item.play[0].odds;
+                                        findItem.play[0].result = item.play[0].result;
+
+                                        findItem.play[1].odds = item.play[1].odds;
+                                        findItem.play[1].concedePoint = item.play[1].concedePoint;
+                                        findItem.play[1].result = item.play[1].result;
+
+                                        findItem.updateDate = new Date();
+
+                                        findItem.save();
+
+                                        logger.writeInfo(item.id + "update sucess!");
+                                    }else{
+                                        logger.writeWarn(item.id+ "-on use update!");
+                                    }
+                                }
+                            });
+                        });
+
+                        //console.log(fetchFormatObj.items.length);
+                    } else {
+                        logger.writeErr('get ct is error');
+                    }
+                //} catch (e) {
+                //    logger.writeErr('get addons error,url:' + gamesUrl + (e.message||'') );
+                //}
+            });
+        //} catch (e) {
+        //    logger.writeErr('get addons error,url:' + peiLvUrl + (e.message||'') );
+        //}
     });
 }
 
