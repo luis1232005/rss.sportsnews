@@ -9,6 +9,7 @@ var util = require("../lib/util");
 var logger = require("../lib/loghelper").helper;
 var Lottery = require('../models/Lottery');
 var Q = require('q');
+var Fetch = require('node-fetch');
 
 
 function getFormatDateObj(date) {
