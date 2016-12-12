@@ -1,2 +1,4 @@
 .idea/*
 node_modules/*
+./lib/mongodb.js
+./log4js.json
