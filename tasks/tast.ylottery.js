@@ -269,7 +269,7 @@ function fetchLottery(dateObj) {
         return;
     }
 
-    logger.writeInfo("start fetch task");
+    logger.writeInfo("start fetch yestday task");
     var peiLvUrl = 'http://live.aicai.com/static/no_cache/jc/zcnew/data/hist/' + dateObj.sDateStr + 'zcRefer.js';
     var gamesUrl = 'http://live.aicai.com/jsbf/timelyscore!dynamicMatchDataForJczq.htm?dateTime=' + dateObj.lDateStr;
     var preSpUrl = 'http://live.aicai.com/static/no_cache/jc/zc/data/gudinghh_sp.html';
@@ -293,5 +293,7 @@ function fetchLottery(dateObj) {
             process.exit();
         });
 }
-
-fetchLottery();
+var now = new Date().getTime();
+var yesday = new Date(now- 24 * 12 * 60 * 60 * 1000);
+yDateObj = getFormatDateObj(yesday);
+fetchLottery(yDateObj);
