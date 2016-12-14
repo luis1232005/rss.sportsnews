@@ -106,11 +106,13 @@ function formatGameInfo(cts) {
                 id = $tds.eq(0).find(".jq_selectmatch").eq(0).attr("id");
                 id = id.replace('jq_', '');
 
+                //console.log(id+"@@@@@@@@");
                 saishi = util.replaceFnc($tds.eq(2).text());
                 playDate = util.replaceFnc($tds.eq(3).text()).substr(0, 11);
                 tempName = util.replaceFnc($tds.eq(4).text());
                 playModes = $tds.eq(6).text();
                 addonsTemp = $tds.eq(7).text();
+                //console.log("####");
 
                 //计算赔率
                 var matchNo = util.replaceFnc($tds.eq(1).text());
@@ -138,20 +140,21 @@ function formatGameInfo(cts) {
 
                 //抓取赔率
                 if (peilvMaps && id && peilvMaps[id] && peilvMaps[id].sp) {
-                    rqAddons = peilvMaps[id].sp.jczq_spf_gd.replace(/-/gi, '|');
-                    noRqAddons = peilvMaps[id].sp.jczq_xspf_gd.replace(/-/gi, '|');
+                    //console.log(peilvMaps[id].sp.jczq_spf_gd,peilvMaps[id].sp.jczq_xspf_gd,spInfo['spgudingspf'][spIndex]);
+                    rqAddons = (peilvMaps[id].sp.jczq_spf_gd||'').replace(/-/gi, '|');
+                    noRqAddons = (peilvMaps[id].sp.jczq_xspf_gd||'').replace(/-/gi, '|');
                 }else{
                     if(spInfo['spgudingspf'] &&
                         spInfo['spgudingspf'][spIndex] &&
                         spInfo['spgudingxspf'] &&
                         spInfo['spgudingxspf'][spIndex]){
 
-                        rqAddons = spInfo['spgudingspf'][spIndex].replace(/-/g,"|");
-                        noRqAddons = spInfo['spgudingxspf'][spIndex].replace(/-/g,"|");
+                        rqAddons = (spInfo['spgudingspf'][spIndex]||'').replace(/-/g,"|");
+                        noRqAddons = (spInfo['spgudingxspf'][spIndex]||'').replace(/-/g,"|");
                     }
                 }
 
-                //console.log(rqAddons,noRqAddons);
+                //console.log(spInfo['spgudingspf'][spIndex]);
 
                 var temResult = -10000;
                 if (score) {
@@ -216,8 +219,8 @@ function lotterySave(item,callback){
                 logger.writeInfo(item.id + "save sucess!");
             });
         } else {
+            //console.log(findItem.name,!findItem.finish,item.result);
             if (findItem.id && findItem.id == item.id && !findItem.finish && item.result != -10000) {
-
                 findItem.finish = item.finish;
                 findItem.score = item.score;
                 findItem.result = item.result;
@@ -294,6 +297,7 @@ function fetchLottery(dateObj) {
         });
 }
 var now = new Date().getTime();
-var yesday = new Date(now- 24 * 12 * 60 * 60 * 1000);
+var yesday = new Date(now - 24 * 60 * 60 * 1000);
 yDateObj = getFormatDateObj(yesday);
+//console.log(yDateObj);
 fetchLottery(yDateObj);

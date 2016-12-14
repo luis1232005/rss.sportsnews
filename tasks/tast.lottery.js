@@ -138,16 +138,17 @@ function formatGameInfo(cts) {
 
                 //抓取赔率
                 if (peilvMaps && id && peilvMaps[id] && peilvMaps[id].sp) {
-                    rqAddons = peilvMaps[id].sp.jczq_spf_gd.replace(/-/gi, '|');
-                    noRqAddons = peilvMaps[id].sp.jczq_xspf_gd.replace(/-/gi, '|');
+                    //console.log(peilvMaps[id].sp.jczq_spf_gd,peilvMaps[id].sp.jczq_xspf_gd,spInfo['spgudingspf'][spIndex]);
+                    rqAddons = (peilvMaps[id].sp.jczq_spf_gd||'').replace(/-/gi, '|');
+                    noRqAddons = (peilvMaps[id].sp.jczq_xspf_gd||'').replace(/-/gi, '|');
                 }else{
                     if(spInfo['spgudingspf'] &&
                         spInfo['spgudingspf'][spIndex] &&
                         spInfo['spgudingxspf'] &&
                         spInfo['spgudingxspf'][spIndex]){
 
-                        rqAddons = spInfo['spgudingspf'][spIndex].replace(/-/g,"|");
-                        noRqAddons = spInfo['spgudingxspf'][spIndex].replace(/-/g,"|");
+                        rqAddons = (spInfo['spgudingspf'][spIndex]||'').replace(/-/g,"|");
+                        noRqAddons = (spInfo['spgudingxspf'][spIndex]||'').replace(/-/g,"|");
                     }
                 }
 
